@@ -1,5 +1,11 @@
 version: '3'
 services:
+  jenkins:
+    build: ./jenkins
+    ports: 
+      - "8080:8080"
+    volumes:
+      - "jenkins_home:/ksemin/data/jenkins_home"
   app1:
     build: ./app1
     ports:
@@ -15,3 +21,6 @@ services:
     depends_on:
       - app1
       - app2
+      - jenkins
+volumes:
+  jenkins_home:
